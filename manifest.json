@@ -1,6 +1,6 @@
 {
   "name": "Taobao Link Cleaner",
-  "description": "Extracts and copies clean Taobao item links with a keyboard shortcut.",
+  "description": "Extracts and copies clean Taobao and Tmall item links with a keyboard shortcut.",
   "version": "1.0",
   "manifest_version": 3,
   "permissions": [
@@ -8,7 +8,8 @@
     "scripting"
   ],
   "host_permissions": [
-    "https://*.taobao.com/*"
+    "https://*.taobao.com/*",
+    "https://*.tmall.com/*"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -28,7 +29,7 @@
       "suggested_key": {
         "default": "Ctrl+Shift+P"
       },
-      "description": "Extract and copy clean Taobao item link"
+      "description": "Extract and copy clean Taobao or Tmall item link"
     }
   }
 }

@@ -14,19 +14,27 @@ async function handleCopyClick() {
   }
   try {
     const url = new URL(tab.url);
-    if (url.hostname.endsWith('taobao.com') && url.pathname.startsWith('/item.')) {
+    if (
+      (url.hostname.endsWith('taobao.com') && url.pathname.startsWith('/item.')) ||
+      (url.hostname.endsWith('tmall.com') && url.pathname === '/item.htm')
+    ) {
       const id = url.searchParams.get('id');
       if (id) {
-        const cleanUrl = `https://item.taobao.com/item.html?id=${id}`;
+        let cleanUrl;
+        if (url.hostname.endsWith('taobao.com')) {
+          cleanUrl = `https://item.taobao.com/item.html?id=${id}`;
+        } else if (url.hostname.endsWith('tmall.com')) {
+          cleanUrl = `https://detail.tmall.com/item.htm?id=${id}`;
+        }
         await navigator.clipboard.writeText(cleanUrl);
         status.textContent = 'Copied!';
         status.style.color = '#388e3c';
       } else {
-        status.textContent = 'No Taobao item id found in the URL.';
+        status.textContent = 'No item id found in the URL.';
         status.style.color = '#c62828';
       }
     } else {
-      status.textContent = 'This is not a Taobao item page.';
+      status.textContent = 'This is not a Taobao or Tmall item page.';
       status.style.color = '#c62828';
     }
   } catch (e) {
