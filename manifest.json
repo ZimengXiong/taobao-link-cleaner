@@ -1,0 +1,34 @@
+{
+  "name": "Taobao Link Cleaner",
+  "description": "Extracts and copies clean Taobao item links with a keyboard shortcut.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": [
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.taobao.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "extension_img.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "32": "icon-32.png",
+    "64": "icon-64.png",
+    "128": "icon-128.png"
+  },
+  "commands": {
+    "extract-taobao-link": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+P"
+      },
+      "description": "Extract and copy clean Taobao item link"
+    }
+  }
+}
